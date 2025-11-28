@@ -1,0 +1,36 @@
+#cloud-config
+hostname: jenkins-server
+fqdn: jenkins-server.local
+
+users:
+  - name: devops
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ57DymlGCMycHOCtblYH0rOps9MCt6QqTg9b3zuDn/u devops-project-vms
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - curl
+  - wget
+  - git
+  - openjdk-17-jdk
+  - apt-transport-https
+  - ca-certificates
+  - gnupg
+  - software-properties-common
+
+runcmd:
+  - echo "Jenkins VM initialized" > /home/devops/setup-complete.txt
+  - chown devops:devops /home/devops/setup-complete.txt
+
+ssh_pwauth: false
+timezone: America/New_York
+
+power_state:
+  mode: reboot
+  timeout: 300
+  condition: true
