@@ -1,0 +1,142 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Application runtime
+tasks.json
+*.log
+*.sqlite
+*.db
+
+# IDE and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Docker
+*.tar
+*.tar.gz
+
+# VM Images and Virtualization - CRITICAL!
+*.qcow2
+*.qcow
+*.iso
+*.img
+*.vmdk
+*.vdi
+*.vhd
+*.ova
+*.ovf
+
+# Java/Jenkins artifacts
+*.jar
+*.war
+*.ear
+*.class
+target/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.gz
+*.bz2
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# Security - never commit these!
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+id_rsa
+id_dsa
+id_ed25519
+*.secret
+.env
+.env.local
+secrets.yml
+
+# Jenkins specific
+.jenkins/
+jenkins-home/
+
+# Cloud-init generated files
+*-cidata.iso
+
+# VM configs - keep YAML, not images
+vm-configs/*.qcow2
+vm-configs/*.iso
+vm-configs/*.img
+
+# Backup files
+*.backup
+*-backup
+.git.backup/
+
+# Large binary files
+*.exe
+*.dll
+*.dylib
+
+# Test coverage
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# Documentation builds
+docs/_build/
+site/
+
+# Virtual environment in app directory
+app/venv/

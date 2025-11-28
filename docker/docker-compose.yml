@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  task-manager:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - task-data:/app/data
+    environment:
+      - FLASK_ENV=production
+    restart: unless-stopped
+
+volumes:
+  task-data:
