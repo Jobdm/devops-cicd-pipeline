@@ -1,6 +1,6 @@
-# DevOps Learning Project - Phase 2: KVM Infrastructure (FINAL)
+# DevOps Learning Project - Phase 2: KVM Infrastructure
 
-## Overview (Week 2 - ~8 hours)
+## Overview
 
 Create two virtual machines using KVM that will host your CI/CD pipeline:
 - **Jenkins VM:** Automation server (4GB RAM, 2 CPUs)
@@ -743,20 +743,7 @@ cat ~/.ssh/id_ed25519.pub
 ```
 
 ### Issue: VMs slow or laggy
-**Solution:** Your hardware (32GB RAM) is perfect. Check host CPU usage: `top`
-
----
-
-## What You've Learned
-
-✅ KVM/libvirt virtualization  
-✅ Cloud-init automation  
-✅ Virtual networking (NAT)  
-✅ SSH key-based authentication  
-✅ Multi-tier infrastructure  
-✅ Infrastructure documentation  
-
-**Time spent:** ~8 hours ✓
+**Solution:** Hardware (32GB RAM) is perfect. Check host CPU usage: `top`
 
 ---
 
@@ -768,5 +755,3 @@ Phase 3 will install Jenkins and create your automated CI/CD pipeline:
 - Automated build pipeline
 - Deployment automation
 - Monitoring setup
-
-Let me know when you're ready!
