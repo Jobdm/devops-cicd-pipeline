@@ -59,38 +59,137 @@ This project implements a full CI/CD pipeline that automatically builds, tests, 
 
 ## 🚀 Quick Start
 
-### 1. Clone the Repository
+### Try the Application (No Infrastructure Required)
 
+You can run the task manager application locally without setting up the full CI/CD infrastructure:
+
+#### Local Development
 ```bash
-git clone https://github.com/Jobdm/task-manager-pipeline.git
-cd task-manager-pipeline
-```
+git clone https://github.com/Jobdm/devops-cicd-pipeline.git
+cd devops-cicd-pipeline/app
 
-### 2. Test the Application Locally
-
-```bash
-cd app
+# Create virtual environment
 python3 -m venv venv
 source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Run application
 python app.py
 ```
 
-Visit: `http://localhost:5000`
+Open your browser to `http://localhost:5000`
 
-### 3. Build Docker Image
-
+#### Docker Container
 ```bash
+# Build image
 docker build -t task-manager:latest -f docker/Dockerfile .
-docker run -d -p 5000:5000 task-manager:latest
+
+# Run container
+docker run -d -p 5000:5000 --name task-manager task-manager:latest
+
+# View logs
+docker logs task-manager
+
+# Stop container
+docker stop task-manager && docker rm task-manager
 ```
 
-### 4. Set Up Infrastructure
+Open your browser to `http://localhost:5000`
 
-See detailed guides in `/docs`:
-- [Phase 1: Application Setup](docs/PHASE1.md)
-- [Phase 2: Infrastructure Setup](docs/PHASE2.md)
-- [Phase 3: Jenkins Pipeline](docs/PHASE3.md)
+---
+
+## 🏗️ Full Infrastructure Setup (Advanced)
+
+To replicate the complete CI/CD pipeline with automated deployment infrastructure:
+
+### Prerequisites
+- Linux host with KVM/libvirt virtualization
+- 16GB+ RAM (32GB recommended for smooth operation)
+- 50GB+ free disk space
+- Docker installed on host
+- Basic command line proficiency
+- **Time commitment:** 8-12 hours total
+
+### What You'll Build
+
+This project demonstrates a complete DevOps workflow:
+
+1. **Infrastructure Layer**
+   - 2 KVM virtual machines provisioned with cloud-init
+   - Network configuration and SSH key authentication
+   - Automated VM initialization
+
+2. **CI/CD Pipeline**
+   - Jenkins automation server
+   - Automated Docker image builds
+   - Continuous testing with health checks
+   - Automated deployment to production
+
+3. **Monitoring**
+   - Health check endpoints
+   - Automated monitoring with logging
+   - Deployment verification
+
+### Setup Phases
+
+**Phase 1: Application & Containerization** (~2-3 hours)
+- Build and test Flask application
+- Create Docker containers
+- See Quick Start above
+
+**Phase 2: Infrastructure Provisioning** (~3-4 hours)
+- Create and configure virtual machines
+- Set up networking and SSH keys
+- Provision with cloud-init
+- **Detailed guide:** [INFRASTRUCTURE.md](docs/INFRASTRUCTURE.md)
+
+**Phase 3: Jenkins CI/CD Pipeline** (~3-4 hours)
+- Install and configure Jenkins
+- Create automated pipeline
+- Configure deployment automation
+- **Detailed guide:** [PIPELINE.md](docs/PIPELINE.md)
+
+### Architecture Overview
+```
+┌──────────────┐       ┌───────────────┐       ┌──────────────────┐
+│   Developer  │──────▶│  Jenkins VM   │──────▶│  Production VM   │
+│   Workstation│       │               │       │                  │
+│              │       │ • Build       │       │ • Docker Runtime │
+│ • Git commits│       │ • Test        │       │ • Application    │
+│ • Code review│       │ • Deploy      │       │ • Monitoring     │
+└──────────────┘       └───────────────┘       └──────────────────┘
+```
+
+### Quick Setup Summary
+```bash
+# 1. Download Ubuntu cloud image
+wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
+
+# 2. Create cloud-init configurations
+# See vm-configs/ directory for templates
+
+# 3. Provision VMs with virt-install
+# See INFRASTRUCTURE.md for commands
+
+# 4. Install Jenkins on Jenkins VM
+# See PIPELINE.md for installation steps
+
+# 5. Configure and run pipeline
+# Jenkinsfile included in repository
+```
+
+For complete step-by-step instructions, see the documentation in `/docs`.
+
+### Simplified Alternative
+
+If you want to explore the concepts without full infrastructure:
+- Use **Docker Compose** to run multiple containers locally
+- Use **Minikube** for local Kubernetes learning (future enhancement)
+- Deploy to cloud platforms (AWS, Azure, GCP) instead of local VMs
+
+---
 
 ## 📁 Project Structure
 
@@ -192,7 +291,6 @@ Detailed documentation available in `/docs`:
 
 - **[INFRASTRUCTURE.md](docs/INFRASTRUCTURE.md)** - VM architecture and management
 - **[PIPELINE.md](docs/PIPELINE.md)** - CI/CD pipeline details and troubleshooting
-- **[PHASE Guides](docs/)** - Step-by-step setup instructions
 
 ## 🤝 Contributing
 
