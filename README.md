@@ -327,9 +327,6 @@ This project is open source and available under the [MIT License](LICENSE).
 ### Jenkins Pipeline
 ![Jenkins Build](docs/images/jenkins-pipeline.png)
 
-### Monitoring Dashboard
-![Monitoring](docs/images/monitoring.png)
-
 ---
 
 **⭐ If you find this project helpful, please consider giving it a star!**
