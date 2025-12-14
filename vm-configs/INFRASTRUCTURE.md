@@ -110,3 +110,4 @@ ssh devops@192.168.122.241
 
 # Check if Jenkins' public key is on Production:
 ssh production "cat ~/.ssh/authorized_keys"
+
