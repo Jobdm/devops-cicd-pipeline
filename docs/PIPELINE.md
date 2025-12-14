@@ -40,15 +40,15 @@ Code Change → Jenkins Build → Docker Image → Production VM → Live App
 ## Infrastructure
 
 ### Jenkins Server
-- **IP:** 192.168.122.83
-- **Web UI:** http://192.168.122.83:8080
+- **IP:** 192.168.122.179
+- **Web UI:** http://192.168.122.179:8080
 - **Credentials:** admin / admin123
 - **Resources:** 4GB RAM, 2 CPUs
 - **Disk:** 30GB
 
 ### Production Server
-- **IP:** 192.168.122.127
-- **Application:** http://192.168.122.127
+- **IP:** 192.168.122.241
+- **Application:** http://192.168.122.241
 - **Container:** task-manager (port 80)
 - **Resources:** 2GB RAM, 1 CPU
 - **Disk:** 20GB
@@ -63,7 +63,7 @@ Code Change → Jenkins Build → Docker Image → Production VM → Live App
 ### Ports
 - Jenkins Web UI: 8080
 - Application: 80 (Production VM)
-- Health Check: http://192.168.122.127/health
+- Health Check: http://192.168.122.241/health
 
 ## Monitoring
 
@@ -71,7 +71,7 @@ Code Change → Jenkins Build → Docker Image → Production VM → Live App
 - **Frequency:** Every 5 minutes
 - **Location:** Jenkins VM cron
 - **Log:** /var/log/production-health.log
-- **Endpoint:** http://192.168.122.127/health
+- **Endpoint:** http://192.168.122.241/health
 
 ### View Logs
 ```bash
@@ -96,7 +96,7 @@ ssh jenkins "sudo tail -f /var/log/production-health.log"
 1. Update code in Jenkins workspace
 2. Trigger build
 3. Wait 2-3 minutes
-4. Verify at http://192.168.122.127
+4. Verify at http://192.168.122.241
 
 ### Restart Production App
 ```bash
@@ -107,7 +107,7 @@ ssh production "docker restart task-manager"
 ```bash
 ssh production "docker ps"
 ssh production "docker logs task-manager"
-curl http://192.168.122.127/health
+curl http://192.168.122.241/health
 ```
 
 ## Performance Metrics
@@ -134,7 +134,7 @@ ssh jenkins "sudo systemctl restart jenkins"
 ### Deployment Fails (SSH Error)
 ```bash
 # Test SSH connection
-ssh jenkins "ssh devops@192.168.122.127 'docker ps'"
+ssh jenkins "ssh devops@192.168.122.241 'docker ps'"
 
 # Verify credential exists
 # Jenkins → Manage → Credentials → production-ssh-key
