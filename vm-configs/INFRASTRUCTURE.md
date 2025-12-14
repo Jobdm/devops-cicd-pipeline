@@ -4,7 +4,7 @@
 
 ### Jenkins Server
 - **Hostname:** jenkins-server
-- **IP Address:** 192.168.122.83
+- **IP Address:** 192.168.122.179
 - **Memory:** 4GB
 - **CPUs:** 2
 - **Disk:** 30GB
@@ -14,7 +14,7 @@
 
 ### Production Server
 - **Hostname:** production-server
-- **IP Address:** 192.168.122.127
+- **IP Address:** 192.168.122.241
 - **Memory:** 2GB
 - **CPUs:** 1
 - **Disk:** 20GB
@@ -105,8 +105,8 @@ arp -an | grep 192.168.122
 ```bash
 # From Jenkins:
 ssh jenkins
-ping 192.168.122.127
-ssh devops@192.168.122.127
+ping 192.168.122.241
+ssh devops@192.168.122.241
 
 # Check if Jenkins' public key is on Production:
 ssh production "cat ~/.ssh/authorized_keys"
